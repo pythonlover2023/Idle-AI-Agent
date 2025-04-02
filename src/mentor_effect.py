@@ -3,10 +3,13 @@ class MentorEffect:
         self.mentor = mentor
         self.mentee = mentee
 
-    def apply(self):
-        if self.mentor.skill_level >= 5 and self.mentor.coins >= 10:
-            self.mentor.coins -= 10
-            self.mentee.receive_boost()
-            print(f"{self.mentor.name} mentors {self.mentee.name} for 10 coins.")
+    def apply(self, skill_name):
+        if skill_name in self.mentor.skills and self.mentor.skills[skill_name].level >= 5:
+            if self.mentor.coins >= 10:
+                self.mentor.coins -= 10
+                self.mentee.receive_boost(skill_name)
+                print(f"{self.mentor.name} mentors {self.mentee.name} for {skill_name} (10 coins).")
+            else:
+                print("Not enough coins for mentor effect.")
         else:
-            print("Mentor effect not applicable: Skill level < 5 or not enough coins.")
+            print(f"Mentor effect not applicable: {skill_name} level < 5.")
