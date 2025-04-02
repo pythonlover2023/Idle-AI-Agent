@@ -1,15 +1,15 @@
 class Agent:
-    def __init__(self, name, skill_level=1, learning_rate=1.0, coins=100):
+    def __init__(self, name, coins=100):
         self.name = name
-        self.skill_level = skill_level
-        self.learning_rate = learning_rate
         self.coins = coins
+        self.skills = {"exploration": Skill("Exploration"), "combat": Skill("Combat")}
+        self.learning_rate = 1.0
         self.boost_actions_left = 0
 
-    def receive_boost(self):
-        self.learning_rate *= 1.2  # +20% Boost
+    def receive_boost(self, skill_name):
+        self.learning_rate *= 1.2
         self.boost_actions_left = 10
-        print(f"{self.name} received a learning boost! New learning rate: {self.learning_rate}")
+        print(f"{self.name} received a boost for {skill_name}! New learning rate: {self.learning_rate}")
 
     def perform_action(self):
         if self.boost_actions_left > 0:

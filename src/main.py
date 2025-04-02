@@ -7,3 +7,11 @@ if __name__ == "__main__":
     effect = MentorEffect(mentor, mentee)
     effect.apply()
     print(f"Mentor coins left: {mentor.coins}")
+
+class GameLoop:
+    def __init__(self, agents):
+        self.agents = agents
+
+    def step(self):
+        for agent in self.agents:
+            agent.perform_action()
