@@ -1,3 +1,5 @@
+from skill import Skill  # Fehlender Import hinzugefügt
+
 class Agent:
     def __init__(self, name, coins=100):
         self.name = name
